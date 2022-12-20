@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path='/' exact element={<Home />} />
           <Route path='/cart' element={<Cart />} />
-          <Route path='/*' element={<NotFound />} />
+          {/* <Route path='/*' element={<NotFound />} /> */}
 
         </Routes>
 
