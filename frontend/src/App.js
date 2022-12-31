@@ -6,6 +6,7 @@ import Cart from './components/Cart';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
 import {ToastContainer} from 'react-toastify';
+import Register from './auth/Register';
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path='/' exact element={<Home />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/register' element={<Register/>}/>
           <Route path='/*' element={<NotFound />} />
 
         </Routes>

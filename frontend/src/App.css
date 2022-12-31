@@ -309,3 +309,11 @@
     margin-bottom: 2rem;
   }
 }
+.parent_div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height:900px;
+
+
+}

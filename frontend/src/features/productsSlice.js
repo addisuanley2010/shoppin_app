@@ -49,7 +49,7 @@ const productsSlice = createSlice({
             state.status = "rejected"
             state.error = "rejected"
         })
-     
+
     }
 });
 
