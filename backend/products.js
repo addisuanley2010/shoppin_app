@@ -33,30 +33,8 @@ const products = [
         image:
             "https://res.cloudinary.com/dk9suzxd2/image/upload/v1671540309/onlineShop/galaxyS_kbybpv.png",
     },
-     {
-        id: 4,
-        name: "best shoe",
-        brand: "Apple",
-        desc: "6.1-inch display",
-        price: 999,
-        image: "https://res.cloudinary.com/dk9suzxd2/image/upload/v1671540040/samples/ecommerce/shoes.png",
-    },
-      {
-        id: 5,
-        name: "lether bag",
-        brand: "niman",
-        desc: "6.1-inch display",
-        price: 999,
-        image: "https://res.cloudinary.com/dk9suzxd2/image/upload/v1671540045/samples/ecommerce/leather-bag-gray.jpg",
-    },
-      {
-        id: 6,
-        name: "blue majrs",
-        brand: "Apple",
-        desc: "6.1-inch display",
-        price: 999,
-        image: "https://res.cloudinary.com/dk9suzxd2/image/upload/v1671540036/samples/ecommerce/analog-classic.jpg",
-    },
+     
+      
       {
         id: 7,
         name: "car interior",
