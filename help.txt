@@ -1,11 +1,4 @@
-// this is some temorary info
-//test branch
-//test update
-//uptodate
-//update gitmain
-//test 
-//bro
-//git branch --set-upstream-to=origin/test4
+//git branch --set-upstream-to=origin/branch_name
+//git push if not work use the code below
 //git push origin HEAD
-//update main
-//update from test two
+
