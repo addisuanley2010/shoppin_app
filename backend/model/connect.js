@@ -6,9 +6,9 @@ const con = mysql.createConnection({
     port:'3360',
     database: 'ecommerce'
 }) 
-con.connect((err) => {
+con.connect((err) => { 
     if (err)
-        console.log(err)
+        console.log(err) 
     else
         console.log("Connected!");
 });
