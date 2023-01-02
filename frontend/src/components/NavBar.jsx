@@ -1,14 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector ,useDispatch} from "react-redux";
+import {logoutUser} from "../features/authSlice"
 const NavBar = () => {
-  const cartQuantity=useSelector(state=>state.cart)
+  const cartQuantity = useSelector((state) => state.cart);
+  const auth = useSelector((state) => state.auth);
+  const dispatch=useDispatch()
+
+ 
+
+const handleLogout=()=>{
+  dispatch(logoutUser())
+}
+
+  console.log(auth);
   return (
     <nav className="nav-bar">
       <Link>
         <h2>online shopp</h2>
       </Link>
-      <Link to={'/cart'}>
+      <Link to={"/cart"}>
         <div className="nav-bag">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -25,6 +36,28 @@ const NavBar = () => {
           </span>
         </div>
       </Link>
+      <div>
+        {!auth.username ? (
+          <>
+            <Link to={"/register"}>Register</Link>
+            <Link to={"/login"}>Login</Link>
+          </>
+        ) : (
+          <>
+            <Link to={"/"}><button onClick={handleLogout}  
+                     style={{
+                      color: "blue",
+                      background: "white",
+                      borderRadius: "5px",
+                      height: "40px",
+                      paddingTop: "5px",
+                      paddingBottom: "5px",
+                      paddingLeft: "10px",
+                      width: "200px",
+                    }}>Logout</button></Link>
+          </>
+        )}
+      </div>
     </nav>
   );
 };

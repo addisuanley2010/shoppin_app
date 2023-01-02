@@ -1,11 +1,9 @@
 
 
 import { configureStore } from "@reduxjs/toolkit";
-import cartReducer from "../features/cartSlice";
+import cartReducer, { getTotals } from "../features/cartSlice";
 import productsReducer, { productsFetch } from "../features/productsSlice"; 
-import { getTotals } from "../features/cartSlice";
-import authReducer from "../features/authSlice";
-
+import authReducer, { loadUser } from "../features/authSlice";
 export const store = configureStore({
   reducer: {
     products: productsReducer,
@@ -15,7 +13,7 @@ export const store = configureStore({
   },
 
 });
-
+store.dispatch(loadUser())
 store.dispatch(productsFetch());
 store.dispatch(getTotals());
 

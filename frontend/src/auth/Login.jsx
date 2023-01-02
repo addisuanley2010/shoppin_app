@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../features/authSlice";
+import { useNavigate } from "react-router-dom";
+import { LoginUser } from "../features/authSlice";
 
-const Register = () => {
+const Login = () => {
   const [user, setUser] = useState({
     username: "",
-    email: "",
     password: "",
   });
-//   const authData = useSelector((state) => state.auth);
 
+const navigate=useNavigate()
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
@@ -24,12 +24,13 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(registerUser(user));
-    setUser({ ...user, username: "", email: "", password: "" });
+    dispatch(LoginUser(user));
+    navigate("/")
+    setUser({ ...user, username: "",  password: "" });
   };
   return (
     <div className="parent_div">
-      <h4>Register </h4>
+      <h4>Login </h4>
       <form onSubmit={(e) => handleSubmit(e)}>
         username:
         <input
@@ -38,13 +39,7 @@ const Register = () => {
           value={user.username}
           onChange={handleChange}
         />
-        email:
-        <input
-          type="email"
-          name="email"
-          value={user.email}
-          onChange={handleChange}
-        />
+       
         password:
         <input
           type="password"
@@ -54,11 +49,13 @@ const Register = () => {
         />
         <br />
         <button type="submit">
-            Register
+            Login
         </button>
       </form>
     </div>
   );
 };
 
-export default Register;
+export default Login;
+
+

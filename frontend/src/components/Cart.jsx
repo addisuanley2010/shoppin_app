@@ -4,18 +4,19 @@ import {
   addToCart,
   clearCart,
   decreaseCart,
-   getTotals,
+  getTotals,
   removeFromCart,
 } from "../features/cartSlice";
-
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Cart = () => {
+  const auth = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   useEffect(() => {
-     dispatch(getTotals());
+    dispatch(getTotals());
   }, [cart, dispatch]);
 
   const handleAddToCart = (product) => {
@@ -29,6 +30,26 @@ const Cart = () => {
   };
   const handleClearCart = () => {
     dispatch(clearCart());
+  };
+
+  const handleCheckout = () => {
+    if (auth.username) {
+      toast.success(
+        ` you pay ${cart.cartTotalAmount}  birr for ${cart.cartTotalQuantity} items`,
+        {
+          position: "top-center",
+          autoClose: 5000,
+          width: "800px",
+        }
+      );
+
+      dispatch(clearCart());
+    } else {
+      toast.error("please login first", {
+        position: "top-center",
+        autoClose: 1000,
+      });
+    }
   };
   return (
     <div className="cart-container">
@@ -86,7 +107,7 @@ const Cart = () => {
                     <button onClick={() => handleAddToCart(cartItem)}>+</button>
                   </div>
                   <div className="cart-product-total-price">
-                    ${cartItem.price * cartItem.cartQuantity}
+                    {cartItem.price * cartItem.cartQuantity}birr
                   </div>
                 </div>
               ))}
@@ -98,10 +119,10 @@ const Cart = () => {
             <div className="cart-checkout">
               <div className="subtotal">
                 <span>Subtotal</span>
-                <span className="amount">${cart.cartTotalAmount}</span>
+                <span className="amount">{cart.cartTotalAmount} birr</span>
               </div>
               <p>Taxes and shipping calculated at checkout</p>
-              <button>Check out</button>
+              <button onClick={handleCheckout}>Check out</button>
               <div className="continue-shopping">
                 <Link to="/">
                   <svg
@@ -117,7 +138,20 @@ const Cart = () => {
                       d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
                     />
                   </svg>
-                  <span>Continue Shopping</span>
+                  <span
+                    style={{
+                      color: "blue",
+                      background: "red",
+                      borderRadius: "5px",
+                      height: "40px",
+                      paddingTop: "5px",
+                      paddingBottom: "5px",
+                      paddingLeft: "50px",
+                      width: "400px",
+                    }}
+                  >
+                    Continue Shopping
+                  </span>
                 </Link>
               </div>
             </div>
