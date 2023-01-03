@@ -1,17 +1,24 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { registerUser } from "../features/authSlice";
-
+import React, { useState,useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {  useNavigate } from "react-router-dom";
+import   { registerUser } from "../features/authSlice";
+import { loadUser } from "../features/authSlice";
 const Register = () => {
   const [user, setUser] = useState({
     username: "",
     email: "",
     password: "",
   });
-//   const authData = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
+const auth=useSelector(state=>state.auth)
 
-  const dispatch = useDispatch();
-
+  useEffect(() => {
+    if(!auth.username){
+    dispatch(loadUser())
+    }
+  }, [auth.username,dispatch])
+  
+  const navigate=useNavigate()
   const handleChange = (event) => {
     const fieldName = event.target.getAttribute("name");
     const fieldValue = event.target.value;
@@ -25,7 +32,10 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(registerUser(user));
+
     setUser({ ...user, username: "", email: "", password: "" });
+     navigate("/cart")
+ 
   };
   return (
     <div className="parent_div">

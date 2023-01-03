@@ -7,7 +7,7 @@ import {
   getTotals,
   removeFromCart,
 } from "../features/cartSlice";
-import { Link } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Cart = () => {
@@ -18,6 +18,9 @@ const Cart = () => {
   useEffect(() => {
     dispatch(getTotals());
   }, [cart, dispatch]);
+
+const navigate=useNavigate()
+
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
@@ -49,6 +52,7 @@ const Cart = () => {
         position: "top-center",
         autoClose: 1000,
       });
+      navigate("/login")
     }
   };
   return (

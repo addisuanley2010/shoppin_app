@@ -9,9 +9,10 @@ import { ToastContainer } from 'react-toastify';
 import Register from './auth/Register';
 import Login from './auth/Login';
 import { useSelector } from 'react-redux';
+
 function App() {
   const auth = useSelector((state) => state.auth);
-
+ 
   return (
     <div className="App">
       <BrowserRouter>

@@ -25,7 +25,7 @@ const navigate=useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(LoginUser(user));
-    navigate("/")
+    navigate("/cart")
     setUser({ ...user, username: "",  password: "" });
   };
   return (

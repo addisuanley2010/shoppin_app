@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector ,useDispatch} from "react-redux";
-import {logoutUser} from "../features/authSlice"
+import { logoutUser} from "../features/authSlice"
 const NavBar = () => {
   const cartQuantity = useSelector((state) => state.cart);
   const auth = useSelector((state) => state.auth);
   const dispatch=useDispatch()
 
- 
 
 const handleLogout=()=>{
   dispatch(logoutUser())
