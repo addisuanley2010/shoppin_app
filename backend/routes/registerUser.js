@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
                 bcrypt.hash(password, 10).then((hashedPassword) => {
                     db.query(sqlInsert, [username,email,hashedPassword], (err, result) => {
                         if (err)
-                            res.send('register failed!' )
+                            res.json('register failed!' )
                         else
                          token=getAuthToken(req.body);
                             res.send(token)
