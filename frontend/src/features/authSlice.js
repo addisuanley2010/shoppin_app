@@ -13,7 +13,7 @@ const initialState = {
     loginError: "",
     userLoaded: false,
 }
-
+//this is for network requiest
 export const registerUser = createAsyncThunk(
     "auth/registerUser",
     async (user) => {
@@ -22,7 +22,7 @@ export const registerUser = createAsyncThunk(
             console.log(token.data)
             localStorage.setItem("token", token.data);
             
-
+     
             return token.data;
         } catch (error) {
             console.log(error.response.data);
